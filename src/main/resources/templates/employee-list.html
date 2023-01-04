@@ -27,13 +27,16 @@
         <td th:text="${emp.surName}"></td>
         <td th:text="${emp.department}"></td>
         <td th:text="${emp.salary}"></td>
-        <td><a th:href="@{/edit/{id}(id=${emp.id})}">Edit</a></td>
-        <td><a th:href="@{/delete/{id}(id=${emp.id})}">Delete</a></td>
+        <td><a th:href="@{employee-update/{id}(id=${emp.id})}">Update</a></td>
+        <td><a th:href="@{employee-delete/{id}(id=${emp.id})}">Delete</a></td>
       </tr>
       </tbody>
     </table>
   </div>
-  <p><a href="/signup">Add a new user</a></p>
+
+  <br>
+  <input type="button" value="Add" onclick="window.location.href='/employee-create'"/>
+  <p><a href="/employee-create" >Add a new user</a></p>
 </div>
 
 </body>

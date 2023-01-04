@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 public class MyController {
     private final EmployeeService employeeService;
@@ -18,7 +16,42 @@ public class MyController {
     @GetMapping("/employees")
     public String showAllEmployees(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployees());
-        return "show_all_employees";
+
+        return "employee-list";
+    }
+
+    @GetMapping("/employee-create")
+    public String createEmployeeForm(Employee employee, Model model) {
+        model.addAttribute("employee", employee);
+
+        return "employee-create";
+    }
+
+    @PostMapping("/employee-create")
+    public String createEmployee(Employee employee) {
+        employeeService.saveEmployee(employee);
+
+        return "redirect:/employees";
+    }
+    @GetMapping("employee-delete/{id}")
+    public String deleteEmployee(@PathVariable("id") int id) {
+        employeeService.deleteEmployee(id);
+
+        return "redirect:/employees";
+    }
+
+    @GetMapping("/employee-update/{id}")
+    public String updateEmployeeForm(@PathVariable("id") int id, Model model) {
+        model.addAttribute("employee", employeeService.getEmpFromId(id));
+
+        return "employee-update";
+    }
+
+    @PostMapping("/employee-update")
+    public String updateEmployee(Employee employee) {
+        employeeService.saveEmployee(employee);
+
+        return "redirect:/employees";
     }
 
 
@@ -34,7 +67,10 @@ public class MyController {
 
 
 
-    @GetMapping("/employees/{id}")
+
+
+
+    /*@GetMapping("/employees/{id}")
     public Employee showSingleEmployee(@PathVariable int id) {
         return employeeService.getEmpFromId(id);
     }
@@ -56,5 +92,5 @@ public class MyController {
 
         employeeService.deleteEmployee(id);
         return "The employee whose id is " + id + " has been deleted";
-    }
+    }*/
 }
