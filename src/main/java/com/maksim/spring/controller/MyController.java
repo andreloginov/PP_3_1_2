@@ -24,14 +24,7 @@ public class MyController {
     public String createEmployeeForm(Employee employee, Model model) {
         model.addAttribute("employee", employee);
 
-        return "employee-create";
-    }
-
-    @PostMapping("/employee-create")
-    public String createEmployee(Employee employee) {
-        employeeService.saveEmployee(employee);
-
-        return "redirect:/employees";
+        return "employee-update";
     }
     @GetMapping("employee-delete/{id}")
     public String deleteEmployee(@PathVariable("id") int id) {
@@ -53,44 +46,4 @@ public class MyController {
 
         return "redirect:/employees";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*@GetMapping("/employees/{id}")
-    public Employee showSingleEmployee(@PathVariable int id) {
-        return employeeService.getEmpFromId(id);
-    }
-
-    @PostMapping("/employees")
-    public Employee saveAnEmployee(@RequestBody Employee employee) {
-        employeeService.saveEmployee(employee);
-        return employee;
-    }
-
-    @PutMapping("/employees")
-    public Employee updateAnEmployee(@RequestBody Employee employee) {
-        employeeService.saveEmployee(employee);
-        return employee;
-    }
-
-    @DeleteMapping("/employees/{id}")
-    public String deleteEmployee(@PathVariable int id) {
-
-        employeeService.deleteEmployee(id);
-        return "The employee whose id is " + id + " has been deleted";
-    }*/
 }

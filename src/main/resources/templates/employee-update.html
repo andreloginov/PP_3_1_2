@@ -6,20 +6,19 @@
 </head>
 <body>
 <form action="#" th:action="@{/employee-update}" th:object="${employee}" method="post">
-  <label for="id">ID</label>
-  <input readonly type="number" th:field="${employee.id}" id="id" placeholder="ID">
+  <input readonly type="hidden" th:field="*{id}" id="id" placeholder="ID">
   <br><br>
   <label for="firstName">First name</label>
-  <input type="text" th:field="${employee.name}" id="firstName" placeholder="Write first name">
+  <input type="text" th:field="*{name}" id="firstName" placeholder="Write first name">
   <br><br>
   <label for="surName">Surname</label>
-  <input type="text" th:field="${employee.surName}" id="surName" placeholder="Write surname">
+  <input type="text" th:field="*{surName}" id="surName" placeholder="Write surname">
   <br><br>
   <label for="department">Department</label>
-  <input type="text" th:field="${employee.department}" id="department" placeholder="Write department">
+  <input type="text" th:field="*{department}" id="department" placeholder="Write department">
   <br><br>
   <label for="salary">Salary</label>
-  <input type="text" th:field="${employee.salary}" id="salary" placeholder="Write salary">
+  <input type="text" th:field="*{salary}" id="salary" placeholder="Write salary">
   <br><br>
   <input type="submit" value="Update">
 </form>
